@@ -1,43 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Bubba Games</title>
-
-<style>
-body{
-font-family:Arial;
-background:#111;
-color:white;
-text-align:center;
-}
-
-.game{
-display:inline-block;
-background:#222;
-padding:20px;
-margin:20px;
-border-radius:10px;
-}
-
-a{
-color:white;
-text-decoration:none;
-}
-</style>
-
+  <title>Bubba Games</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
+  <header>🎮 Bubba Games</header>
 
-<h1>🎮 Bubba Games</h1>
+  <div class="game-card" onclick="location.href='games/slope/index.html'">
+    <h3>Slope</h3>
+  </div>
 
-<div class="game">
-<a href="games/slope.html">Play Slope</a>
-</div>
+  <div class="game-card" onclick="location.href='games/run3/index.html'">
+    <h3>Run 3</h3>
+  </div>
 
-<div class="game">
-<a href="games/run3.html">Play Run 3</a>
-</div>
+  <div class="game-card" onclick="location.href='games/retro-bowl/index.html'">
+    <h3>Retro Bowl</h3>
+  </div>
 
+  <div class="bubbles" id="bubbles"></div>
+
+  <script>
+    const bubblesContainer = document.getElementById('bubbles');
+    for(let i=0;i<30;i++){
+      const bubble = document.createElement('div');
+      bubble.style.position='absolute';
+      bubble.style.borderRadius='50%';
+      bubble.style.background='rgba(255,255,255,0.3)';
+      bubble.style.width=bubble.style.height=Math.random()*50+10+'px';
+      bubble.style.left=Math.random()*100+'%';
+      bubble.style.top=Math.random()*100+'%';
+      bubble.style.animation=`float ${5+Math.random()*5}s linear infinite`;
+      bubblesContainer.appendChild(bubble);
+    }
+    const style=document.createElement('style');
+    style.innerHTML=`
+    @keyframes float { 0% { transform: translateY(0px);} 100% { transform: translateY(-800px);} }
+    `;
+    document.head.appendChild(style);
+  </script>
 </body>
 </html>
